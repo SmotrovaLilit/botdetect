@@ -10,7 +10,7 @@ import (
 	"time"
 	"log"
 	"context"
-	"SmotrovaLilit/botdetect"
+	"github.com/SmotrovaLilit/botdetect"
 )
 
 func main() {
