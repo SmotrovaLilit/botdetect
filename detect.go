@@ -5,11 +5,13 @@ import (
 	"regexp"
 )
 
+// BotDetect need for checking request is from bot or not
 type BotDetect struct {
 	userAgent string
 	rules     []string
 }
 
+// NewBotDetect function create instance of BotDetect
 func NewBotDetect(r *http.Request, rules []string) *BotDetect {
 	if rules == nil {
 		rules = makeRules()
@@ -17,13 +19,13 @@ func NewBotDetect(r *http.Request, rules []string) *BotDetect {
 
 	d := &BotDetect{
 		userAgent: r.UserAgent(),
-		rules: rules,
+		rules:     rules,
 	}
 
 	return d
 }
 
-func makeRules() ([] string) {
+func makeRules() []string {
 	return []string{
 		"Googlebot|Mediapartners-Google|AdsBot-Google|Google Keyword Suggestion|Googlebot-Mobile|AdsBot-Google-Mobile|APIs-Google",
 		"YandexAccessibilityBot|YandexBot|YandexMobileBot|YandexImages|yandex.com/bots",
@@ -31,6 +33,7 @@ func makeRules() ([] string) {
 	}
 }
 
+// IsBot method detect is bot or not
 func (d *BotDetect) IsBot() bool {
 	for _, ruleValue := range d.rules {
 		if d.match(ruleValue) {

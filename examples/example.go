@@ -1,16 +1,16 @@
 package examples
 
 import (
+	"context"
 	"flag"
+	"fmt"
+	"github.com/SmotrovaLilit/botdetect"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
-	"fmt"
 	"time"
-	"log"
-	"context"
-	"github.com/SmotrovaLilit/botdetect"
 )
 
 func main() {
@@ -47,7 +47,6 @@ func main() {
 
 	server.Shutdown(ctx)
 }
-
 
 func handlerCheckBot(w http.ResponseWriter, r *http.Request) {
 	s := botdetect.NewBotDetect(r, nil)

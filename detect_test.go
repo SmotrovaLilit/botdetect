@@ -1,8 +1,8 @@
 package botdetect
 
 import (
-	"testing"
 	"net/http"
+	"testing"
 )
 
 // https://yandex.ru/support/webmaster/robot-workings/check-yandex-robots.html#robot-in-logs
@@ -65,7 +65,7 @@ func TestIfBotRequest(t *testing.T) {
 			t.Run(userAgent, func(t *testing.T) {
 				request, err := http.NewRequest(typeR, "/", nil)
 				if err != nil {
-					t.Error( err)
+					t.Error(err)
 					return
 				}
 				request.Header.Add("User-Agent", userAgent)
