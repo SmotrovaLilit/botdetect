@@ -10,9 +10,6 @@ os:
   - linux
   - osx
 
-install:
-  - go get -u github.com/golang/dep/cmd/dep && dep ensure -vendor-only
-
 matrix:
   # make status as green if all tests passed (except for allow_failures)
   fast_finish: true
